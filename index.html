@@ -214,6 +214,55 @@
             font-size: 1.1rem;
             color: var(--text-light);
         }
+
+        .label-with-help {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .help-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            cursor: help;
+            position: relative;
+        }
+
+        .help-icon:hover::after {
+            content: attr(data-help);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: normal;
+            white-space: nowrap;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .help-icon:hover::before {
+            content: '';
+            position: absolute;
+            bottom: 118%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #333;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
@@ -233,7 +282,10 @@
                 >
             </div>
             <div class="form-group">
-                <label for="autenticadorInput">Autenticador</label>
+                <div class="label-with-help">
+                    <label for="autenticadorInput">Autenticador</label>
+                    <span class="help-icon" data-help="O autenticador está localizado no rodapé da nota fiscal de aquisição da semente">?</span>
+                </div>
                 <input 
                     type="text" 
                     id="autenticadorInput" 
