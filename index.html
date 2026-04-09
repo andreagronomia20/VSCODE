@@ -265,7 +265,15 @@
         // Função para limpar e converter coordenadas para formato Google Maps
         function parseCoordinates(coord) {
             if (!coord) return null;
-            return coord.trim().replace(/"/g, '').replace(/'/g, '');
+            const cleaned = coord
+                .toString()
+                .trim()
+                .replace(/"/g, '')
+                .replace(/'/g, '')
+                .replace(/,/g, '.')
+                .replace(/\s+/g, '');
+
+            return cleaned === '' ? null : cleaned;
         }
 
         // Função para gerar URL do Google Maps
@@ -273,7 +281,14 @@
             const lat = parseCoordinates(latitude);
             const lon = parseCoordinates(longitude);
             if (!lat || !lon) return null;
-            return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(lat)},${encodeURIComponent(lon)}`;
+
+            const latNum = Number(lat);
+            const lonNum = Number(lon);
+            if (Number.isNaN(latNum) || Number.isNaN(lonNum)) {
+                return null;
+            }
+
+            return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(latNum)},${encodeURIComponent(lonNum)}`;
         }
 
         // Carregar CSV ao iniciar
