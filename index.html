@@ -244,7 +244,7 @@
         }
 
         .help-box {
-            display: block;
+            display: none;
             width: 100%;
             padding: 24px 26px;
             margin-top: 14px;
@@ -257,6 +257,10 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             white-space: normal;
             text-align: center;
+        }
+
+        .form-group:hover .help-box {
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -417,7 +421,7 @@
                     </div>
                     <div class="card-item">
                         <span class="card-label">Peneira:</span>
-                        <span class="card-value">${record['PENEIRA'] || 'N/A'}</span>
+                        <span class="card-value">${record['PENEIRA'] ? record['PENEIRA'] + ' MM' : 'N/A'}</span>
                     </div>
                 </div>
 
