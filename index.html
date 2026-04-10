@@ -41,8 +41,14 @@
 
         .logo {
             max-width: 240px;
+            width: 100%;
             margin: 0 auto 20px;
             display: block;
+            background: white;
+            padding: 12px;
+            border-radius: 18px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            object-fit: contain;
         }
 
         h1 {
@@ -231,52 +237,36 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             background-color: var(--primary-color);
             color: white;
-            font-size: 0.75rem;
+            font-size: 0.95rem;
             font-weight: bold;
             cursor: help;
-            position: relative;
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
         }
 
-        .help-icon:hover::after {
-            content: attr(data-help);
-            position: absolute;
-            top: 125%;
-            left: 50%;
-            transform: translateX(-50%);
+        .help-box {
+            display: block;
+            width: 100%;
+            padding: 16px 18px;
+            margin-top: 10px;
             background-color: #333;
             color: white;
-            padding: 12px 14px;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            font-weight: normal;
-            max-width: 280px;
-            word-wrap: break-word;
-            white-space: normal;
-            z-index: 1000;
+            border-radius: 10px;
+            font-size: 1rem;
+            line-height: 1.6;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .help-icon:hover::before {
-            content: '';
-            position: absolute;
-            top: 118%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 6px solid transparent;
-            border-bottom-color: #333;
-            z-index: 1000;
+            white-space: normal;
         }
 
         @media (max-width: 768px) {
-            .help-icon:hover::after {
-                font-size: 0.9rem;
-                padding: 10px 12px;
-                max-width: 220px;
+            .help-box {
+                font-size: 0.98rem;
+                padding: 14px 16px;
             }
         }
     </style>
@@ -301,8 +291,9 @@
             <div class="form-group">
                 <div class="label-with-help">
                     <label for="autenticadorInput">Autenticador</label>
-                    <span class="help-icon" data-help="O autenticador está localizado no rodapé da nota fiscal de aquisição da semente">?</span>
+                    <span class="help-icon" tabindex="0" aria-label="Ajuda sobre autenticador">?</span>
                 </div>
+                <div class="help-box">O autenticador está localizado no rodapé da nota fiscal de aquisição da semente.</div>
                 <input 
                     type="text" 
                     id="autenticadorInput" 
