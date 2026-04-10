@@ -245,7 +245,7 @@
         .help-icon:hover::after {
             content: attr(data-help);
             position: absolute;
-            bottom: 125%;
+            top: 125%;
             left: 50%;
             transform: translateX(-50%);
             background-color: #333;
@@ -254,7 +254,9 @@
             border-radius: 6px;
             font-size: 0.85rem;
             font-weight: normal;
-            white-space: nowrap;
+            max-width: 250px;
+            word-wrap: break-word;
+            white-space: normal;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
@@ -262,12 +264,20 @@
         .help-icon:hover::before {
             content: '';
             position: absolute;
-            bottom: 118%;
+            top: 118%;
             left: 50%;
             transform: translateX(-50%);
             border: 6px solid transparent;
-            border-top-color: #333;
+            border-bottom-color: #333;
             z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .help-icon:hover::after {
+                font-size: 0.75rem;
+                padding: 8px 10px;
+                max-width: 200px;
+            }
         }
     </style>
 </head>
